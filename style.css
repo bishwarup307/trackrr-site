@@ -1,0 +1,262 @@
+/* Trackrr's public pages. Styled after a printed bank statement on tinted cheque paper.
+   System fonts only, so a visit makes no request to anyone but the host. */
+
+:root {
+  color-scheme: light;
+  --paper: #e4eeea;
+  --sheet: #fbfcfa;
+  --ink: #15263a;
+  --muted: #4f5f6c;
+  --rule: #b7c7c1;
+  --stamp: #4a2c8f;
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --data: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1rem/1.6 var(--body);
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--stamp);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--stamp);
+  outline-offset: 3px;
+}
+
+code {
+  font: 0.9em var(--data);
+}
+
+/* Page frame */
+
+.masthead,
+.colophon,
+.sheet {
+  width: min(100% - 2rem, 46rem);
+  margin-inline: auto;
+}
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem 1rem;
+}
+
+.wordmark {
+  font: 600 1.35rem/1 var(--display);
+  text-decoration: none;
+}
+
+.masthead nav {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.masthead nav a {
+  text-decoration: none;
+}
+
+.masthead nav a:hover,
+.masthead nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+.sheet {
+  padding: clamp(1.5rem, 6vw, 3.25rem);
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+}
+
+.colophon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  padding-block: 1.25rem 2.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* Type */
+
+h1,
+h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 3.375rem);
+  line-height: 1.06;
+  letter-spacing: -0.012em;
+}
+
+h2 {
+  margin: 2.5rem 0 0.5rem;
+  font-size: 1.4375rem;
+  line-height: 1.2;
+}
+
+p,
+ul {
+  margin: 0 0 0.875rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+.lede {
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.note {
+  color: var(--muted);
+}
+
+.dated {
+  margin-bottom: 1.75rem;
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font: 0.8125rem var(--data);
+}
+
+/* The statement of what Trackrr receives. Column heads, the double rule under the closing
+   line and "Nil" are all how a bank prints one. */
+
+.statement {
+  position: relative;
+  margin-block: 2.25rem 1rem;
+}
+
+.ledger {
+  width: 100%;
+  border-collapse: collapse;
+  font: 0.9375rem/1.4 var(--data);
+}
+
+.ledger caption {
+  padding-bottom: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.ledger th,
+.ledger td {
+  padding: 0.5rem 0;
+  font-weight: 400;
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.ledger td:last-child,
+.ledger th:last-child {
+  padding-left: 1rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ledger thead th {
+  border-block: 1px solid var(--ink);
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.ledger tbody tr + tr > * {
+  border-top: 1px dotted var(--rule);
+}
+
+.ledger tfoot > tr > * {
+  border-top: 1px solid var(--ink);
+  border-bottom: 3px double var(--ink);
+  font-weight: 700;
+}
+
+/* The one loud thing on the site: a branch's violet rubber stamp. */
+
+.stamp {
+  position: absolute;
+  right: 21%;
+  bottom: 2.5rem;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 3px solid var(--stamp);
+  outline: 1px solid var(--stamp);
+  outline-offset: 2px;
+  color: var(--stamp);
+  font: 800 1.0625rem/1.15 var(--data);
+  letter-spacing: 0.07em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-7deg);
+  opacity: 0.86;
+  mix-blend-mode: multiply;
+  filter: url("#ink");
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stamp {
+    animation: stamp-down 0.26s cubic-bezier(0.3, 1.2, 0.5, 1) 0.45s backwards;
+  }
+
+  @keyframes stamp-down {
+    from {
+      opacity: 0;
+      transform: rotate(-7deg) scale(1.55);
+    }
+  }
+}
+
+/* Too narrow for the stamp to sit beside the labels, so it lands under the statement. */
+@media (max-width: 34rem) {
+  .stamp {
+    position: static;
+    width: fit-content;
+    margin: 1.25rem 0 0 auto;
+  }
+}
+
+@media print {
+  body {
+    background: none;
+  }
+
+  .sheet {
+    border: 0;
+    padding: 0;
+  }
+
+  .stamp {
+    animation: none;
+  }
+}

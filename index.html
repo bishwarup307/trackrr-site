@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trackrr: bills, spending and budgets on your Mac</title>
+  <meta name="description" content="Trackrr is a Mac app that tracks your bills, spending and budgets from the statements, alerts and receipts in your Gmail. Your financial information stays on your Mac.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' fill='none' stroke='%234a2c8f' stroke-width='4'/%3E%3Cpath d='M10 11h12M16 11v12' stroke='%234a2c8f' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="./" aria-current="page">Trackrr</a>
+    <nav aria-label="Main">
+      <a href="privacy/">Privacy policy</a>
+      <a href="terms/">Terms</a>
+    </nav>
+  </header>
+
+  <main class="sheet">
+    <h1>Your bills and spending, kept on your Mac.</h1>
+    <p class="lede">Trackrr is a Mac app that reads the bank statements, card statements, transaction alerts and receipts in your Gmail. It turns them into one record of what you spent, what's due and how your budgets are doing.</p>
+
+    <div class="statement">
+      <table class="ledger">
+        <caption>What Trackrr receives from you</caption>
+        <thead>
+          <tr><th scope="col">Item</th><th scope="col">Sent to Trackrr</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Statements and receipts</td><td>Nil</td></tr>
+          <tr><td>Transactions and amounts</td><td>Nil</td></tr>
+          <tr><td>Accounts and cards</td><td>Nil</td></tr>
+          <tr><td>Analytics and tracking</td><td>Nil</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Closing balance</td><td>Nil</td></tr>
+        </tfoot>
+      </table>
+      <p class="stamp">Stays on<br>your Mac</p>
+    </div>
+    <p class="note">Trackrr has no servers to send your information to. Your Mac collects your email directly from Google and does all the work itself. Read the <a href="privacy/">privacy policy</a> for the details.</p>
+
+    <h2>What Trackrr does</h2>
+    <ul>
+      <li>Finds statements, alerts and receipts in the Gmail accounts you connect, and reads the transactions in them.</li>
+      <li>Shows your spending by month, by category and by account or card, along with each card's billing cycle.</li>
+      <li>Matches receipts to card charges, so you can see what you actually bought.</li>
+      <li>Reminds you when a bill is due.</li>
+      <li>Lets you add a statement yourself by dragging in a PDF.</li>
+    </ul>
+
+    <h2>Why it asks for access to your Gmail</h2>
+    <p>Your statements, alerts and receipts arrive by email, so Trackrr asks Google for permission to read your email (<code>gmail.readonly</code>). Google offers no narrower permission for reading messages and attachments, so this one covers the whole mailbox. Trackrr uses it only to find and read those financial emails.</p>
+    <p>The permission is read-only, so Trackrr can't send, change or delete your email. You sign in on Google's own page, and Trackrr never sees your Google password. You can disconnect an account at any time.</p>
+
+    <h2>Availability</h2>
+    <p>Trackrr is in early development, so you can't download it yet. Some of the features above are still being built.</p>
+  </main>
+
+  <footer class="colophon">
+    <span>Trackrr</span>
+    <a href="privacy/">Privacy policy</a>
+    <a href="terms/">Terms</a>
+    <a href="https://github.com/bishwarup307/trackrr-site/issues">Contact</a>
+  </footer>
+
+  <!-- Uneven ink for the stamp. If a browser ignores this, the stamp simply prints solid. -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.45" result="gaps"/>
+      <feComposite in="SourceGraphic" in2="gaps" operator="in"/>
+    </filter>
+  </svg>
+</body>
+</html>
